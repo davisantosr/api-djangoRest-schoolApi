@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.http import JsonResponse
 
-# Create your views here.
+def contatos(request):
+  if request.method == 'GET':
+    contato = {'id':1, 'nome': 'contatoNome', 'telefone': '55123456'}
+    return JsonResponse(contato)
