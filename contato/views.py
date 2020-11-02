@@ -1,6 +1,8 @@
-from django.http import JsonResponse
+from rest_framework import viewsets
+from contato.models import Contato
+from .serializer import ContatoSerializer
 
-def contatos(request):
-  if request.method == 'GET':
-    contato = {'id':1, 'nome': 'contatoNome', 'telefone': '55123456'}
-    return JsonResponse(contato)
+class ContatosViewSet(viewsets.ModelViewSet):
+  """Exibindo todos os Contatos"""
+  queryset = Contato.objects.all()
+  serializer_class = ContatoSerializer
